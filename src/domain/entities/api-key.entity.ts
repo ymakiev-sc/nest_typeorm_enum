@@ -1,7 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { PaymentSourceType } from '../enums/payment-source-type.enum';
 import { PaymentProvider } from '../enums/payment-provider.enum';
-import { PaymentEntity } from './payment.entity';
 import { ApiKeyStatus } from '../enums/api-key-status.enum';
 import { BaseColumns } from './base-columns';
 
@@ -9,12 +8,6 @@ import { BaseColumns } from './base-columns';
 export class ApiKeyEntity extends BaseColumns {
   @PrimaryColumn('varchar', { primaryKeyConstraintName: 'PK_api_key' })
   id: string;
-
-  @Column({
-    name: 'source',
-    type: 'varchar',
-  })
-  source: string;
 
   @Column({
     name: 'source_type',
@@ -42,21 +35,4 @@ export class ApiKeyEntity extends BaseColumns {
     name: 'status',
   })
   status: ApiKeyStatus;
-
-  @Column({
-    name: 'source_web_hook',
-    type: 'varchar',
-    nullable: true,
-  })
-  sourceWebHook: string;
-
-  @OneToMany(() => PaymentEntity, (payment) => payment.source, { eager: false })
-  payments: PaymentEntity[];
-
-  @Column({
-    name: 'secret_key',
-    type: 'varchar',
-    nullable: true,
-  })
-  secretKey: string;
 }

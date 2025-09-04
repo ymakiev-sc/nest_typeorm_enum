@@ -1,12 +1,5 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseColumns } from './base-columns';
-import { ApiKeyEntity } from './api-key.entity';
 import { PaymentProvider } from '../enums/payment-provider.enum';
 import { PaymentStatus } from '../enums/payment-status.enum';
 
@@ -35,12 +28,4 @@ export class PaymentEntity extends BaseColumns {
     nullable: true,
   })
   status: PaymentStatus;
-
-  @ManyToOne(() => ApiKeyEntity, (apiKey) => apiKey.id, { eager: true })
-  @JoinColumn({
-    name: 'source_id',
-    referencedColumnName: 'id',
-    foreignKeyConstraintName: 'FK_payment_to_api_key_source',
-  })
-  source: ApiKeyEntity;
 }
