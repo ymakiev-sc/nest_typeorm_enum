@@ -1,9 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseColumns } from './base-columns';
 import { PaymentProvider } from '../enums/payment-provider.enum';
 
 @Entity('payment')
-export class PaymentEntity extends BaseColumns {
+export class PaymentEntity {
   @PrimaryGeneratedColumn('uuid', {
     name: 'id',
     primaryKeyConstraintName: 'PK_payment_request',

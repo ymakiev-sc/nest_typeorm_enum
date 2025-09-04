@@ -1,9 +1,8 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { PaymentProvider } from '../enums/payment-provider.enum';
-import { BaseColumns } from './base-columns';
 
 @Entity('api-key')
-export class ApiKeyEntity extends BaseColumns {
+export class ApiKeyEntity {
   @PrimaryColumn('varchar', { primaryKeyConstraintName: 'PK_api_key' })
   id: string;
 
