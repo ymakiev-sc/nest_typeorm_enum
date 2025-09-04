@@ -1,5 +1,9 @@
-export enum AirdropStatus {
-    READY_TO_SEND = 'READY_TO_SEND',
-    CONFIRMATION = 'CONFIRMATION',
-    DONE = 'DONE',
+export enum PaymentSourceType {
+  RushGame = 'RushGame',
+  Subscription = 'Subscription',
+  MerchOrder = 'MerchOrder',
+  ExternalPurchase = 'ExternalPurchase',
+  LuckyWheel = 'LuckyWheel',
+  TgLuckyWheel = 'TgLuckyWheel',
+  Fighters = 'Fighters',
 }
